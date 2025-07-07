@@ -1,0 +1,25 @@
+-- Considera soma de horas na semana atual
+-- Nessa função, calculamos a soma das horas trabalhadas por semana e convertemos de seg para horas 
+-- Depois faz a soma de todas as horas do profissional na semana, fazendo um JOIN entre as tabelas profissioanis, escalas e plantoes para juntas dados necessarios, considerando so plantoes ativos
+-- Por fim, junta somente os funcionarios que tem mais de 40 horas na semana
+SELECT p.id, p.nome, SUM(EXTRACT(EPOCH FROM (pl.hora_fim - pl.hora_inicio))/3600) AS horas_semana
+FROM profissionais p
+JOIN escalas e ON e.id_profissional = p.id
+JOIN plantoes pl ON pl.id = e.id_plantao
+WHERE DATE_PART('week', pl.data) = DATE_PART('week', CURRENT_DATE)
+  AND e.status = 'ativo'
+GROUP BY p.id, p.nome
+HAVING SUM(EXTRACT(EPOCH FROM (pl.hora_fim - pl.hora_inicio))/3600) > 40;
+
+-- Seleção de todos os plantões
+-- Verifica quais plantões ocorrem nas próximas 48 horas a partir do momento atual
+-- Utiliza LEFT JOIN para identificar plantões que ainda não têm escala (e.id será NULL)
+-- Considera apenas plantões com status de escala 'ativo' ou sem escala atribuída
+SELECT pl.*
+FROM plantoes pl
+LEFT JOIN escalas e ON e.id_plantao = pl.id AND e.status = 'ativo'
+WHERE pl.data + pl.hora_inicio <= NOW() + INTERVAL '48 hours'
+  AND e.id IS NULL;
+
+-- Descobrir quais são as substituições pendentes
+SELECT * FROM substituicoes WHERE status = 'pendente';
