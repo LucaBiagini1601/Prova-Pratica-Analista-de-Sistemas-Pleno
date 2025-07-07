@@ -1,0 +1,36 @@
+// utilizei um formato  mais familiar, puxado pro HTML mas não tenho muita experiência com essa parte de API
+Enviar Confirmação de Plantão por E-mail
+
+POST /api/comunicacao/email
+Headers:
+  Authorization: dados do funcionario
+  Content-Type: application/json
+Body:
+{
+  "destinatario": "ana.souza@example.com",
+  "assunto": "Confirmação de Plantão",
+  "mensagem": "Você está escalada para o plantão do dia 01/07 das 08:00 às 14:00."
+}
+
+Notificar Substituição por WhatsApp
+
+POST /api/comunicacao/whatsapp
+Headers:
+  Authorization: dados do funcioario
+  Content-Type: application/json
+Body:
+{
+  "telefone": "11999990010",
+  "mensagem": "Você foi indicado como substituto no plantão 04/07 das 14:00-20:00. Confirmar?"
+}
+
+Verificar Status de Entrega
+
+GET /api/comunicacao/status/{id_mensagem}
+Headers:
+  Authorization: dados do funcionario
+Response:
+{
+  "id_mensagem": "abc123",
+  "status": "entregue"
+}
