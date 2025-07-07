@@ -1,0 +1,18 @@
+Input: data_plantao, hora_inicio, hora_fim
+
+1. Para cada profissional ativo:
+   a. Verificar se há conflito de horário:
+      - Consultar escalas ativas onde o profissional já está alocado
+      - Comparar o horário de início/fim com o novo plantão
+      - Se houver sobreposição, marcar como "indisponível"
+
+   b. Calcular carga horária semanal acumulada:
+      - Filtrar todos os plantões já atribuídos ao profissional
+      - Somar a diferença entre hora_fim e hora_inicio para cada plantão
+      - Considerar apenas plantões da mesma semana (DATA_PART 'week')
+
+2. Excluir da lista os profissionais marcados como "indisponíveis"
+3. Ordenar os profissionais restantes pela carga horária acumulada (ordem crescente)
+4. Selecionar os 3 primeiros da lista e sugerir como substitutos
+5. Retornar lista de nomes, IDs e carga horária para exibição e notificação
+6. Gerar notificação para o gestor, para ele participar da decisão de realocação de plantões
