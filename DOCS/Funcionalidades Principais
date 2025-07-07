@@ -1,0 +1,40 @@
+
+Cadastro e alocação automática de profissionais em plantões:
+Permite que o sistema selecione automaticamente profissionais para plantões com base na sua disponibilidade,
+carga horária semanal e ausência de conflitos de horário. A alocação automática ajuda a substituir o processo manual atual, minimizando erros e atrasos.
+Se utilizarmos práticas de gerenciamento de projetos como vistos no PMBOK em processos de planejamento e no ITIL em Otimização e automatização, é possível pensar em um mecanismo de planejamento
+de escalas futuras, baseado em previsibilidade de demanda, com base em dados passados, contribuindo para a organização e melhor distribuição de horas do time
+
+Controle de carga horária semanal por profissional (máximo configurável):
+O sistema deverá calcular, em tempo real,a soma da carga horária semanal por profissional e alertar quando o limite estabelecido (padrão: 40h) estiver prestes a ser atingido ou ultrapassado.
+Nesse caso, podemos aplicar práticas do COBIT, no gerenciamento de desempenho e capacitação, adicionando um mecanismo que controle as horas gastas pelos funcionários e alerte os superiores
+em casos de risco de sobrecarga, ausências e acumulos de horas propositais, isso garante que as decisões de gerentes do time sejam baseadas em dados e nas capacidades do funcionário
+
+Solicitação de substituição com validação de prazo (>= 12h):
+Profissionais poderão solicitar substituição em plantões com no mínimo 12 horas de antecedência.
+Se o prazo for inferior, será necessário aprovação do supervisor.
+Aplicando práticas ITIL como da progressão com base em feedbacks, uma opção de melhoria de funcionalidade seria adicionar um campo obrigatório de justificativa da solicitação, fazendo com que o sistema aprenda 
+com ocorrências frenquentes, e que ele sugira ações preventivas
+
+Sugestão automática de substitutos com menor carga horária:
+Ao receber uma solicitação de substituição,o sistema deverá sugerir até três profissionais disponíveis que não tenham conflito de horário e que apresentem a menor carga horária acumulada na semana.
+Utilizando processos de gerenciamento de recursos encontrados no PMBOK, uma sugestão de melhoria seria a expansão dos critérios de seleção com base em análise de indivíduos (habilidades e funções exercidas),
+isso faz com que funcionários sejam escalados em papeis que se encaixariam melhor
+
+Aprovação de excedente de horas pelo supervisor:
+Caso a alocação de um plantão exceda a carga horária semanal do profissional,será necessário acionar o fluxo de aprovação com o supervisor responsável.
+
+
+Auditoria de todas as alterações:
+Qualquer ação que altere os dados de escala, plantões, substituições ou alocações deverá ser registrada na tabela de auditoria com data/hora,ação realizada, entidade modificada e usuário responsável.
+Se aumentarmos os requisitos por alteração, como é promovido pelo COBIT em "rastrear e registrar acessos e ações", aumentamos a rastreabilidade e conformidade dos dados, tornando mais fácil o 
+entendimento dos gestores em casos de conflito
+
+Painel de escalas por semana/mês:
+A interface do sistema deve apresentar uma visualização consolidada dos plantões e alocações por profissional, com opções de filtros semanais e mensais, e exportação de relatórios.
+Nesse caso, uma sugestão de melhoria seria baseada na literatura ITIL em "colaborar e promover visibilidade", onde seria feito uma tela para auxiliar na visualização dos calendários de diferentes perfis de funcionários, 
+através de uma integração com o BI, tornando mais visual os dados e de fácil entendimento
+
+Integração com APIs de comunicação (e-mail/WhatsApp):
+Todas as ações relevantes (confirmações, substituições, aprovações) devem acionar serviços de envio de mensagens para notificar os profissionais via e-mail e WhatsApp.
+Aqui é possível utilizar funcionalidades do PMBOK, na parte de gerenciamento de comunicações, criando templates padronizados de mensagem, facilitando e agilisando os processos de envio para os profissionais

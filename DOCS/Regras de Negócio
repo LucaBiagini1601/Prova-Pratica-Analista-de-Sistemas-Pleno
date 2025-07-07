@@ -1,0 +1,17 @@
+Regra 1 - Carga horária máxima semanal por profissional: 40h (exceto se aprovado)
+Cada profissional pode realizar até 40 horas de plantão por semana, caso seja necessária a alocação em plantões adicionais, o sistema exigirá a aprovação de um supervisor antes da confirmação da escala.
+
+Regra 2 - Um plantão deve ter um único profissional por função e horário
+Não é permitido haver dois profissionais escalados para o mesmo plantão com a mesma função no mesmo horário, sendo assim o sistema deve validar e bloquear tentativas de alocação duplicada.
+
+Regra 3 - Substituições requerem pelo menos 12h de antecedência
+Solicitações de substituição devem ser feitas com um mínimo de 12 horas de antecedência da data/hora do plantão, o sistema exigirá justificativa e submeterá à aprovação do supervisor se esse requisito não for cumprido.
+
+Regra 4 - Sugestão automática de até 3 substitutos com menos carga horária
+Quando uma substituição for solicitada, o sistema calculará a carga horária semanal de cada profissional disponível e indicará até três substitutos que não tenham conflito de horário e que tenham a menor carga acumulada (disponíveis).
+
+Regra 5 - Todas as modificações devem ser registradas na tabela de auditoria
+Toda modificação no sistema (alocação, substituição, aprovação, etc.) deve ser registrada na tabela de auditoria, indicando os setores afetados, a ação executada, o usuário responsável e a data/hora.
+
+Regra 6 - Interface com visão de escalas por semana e por mês
+A interface deve fornecer visualizações diferentes do calendário de plantões: uma semanal para alocações detalhadas e uma mensal para planejamento geral e identificação de lacunas.
